@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "public": true,
+  "name": "trading-journal-forex",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
