@@ -32,7 +32,7 @@ Aplikasi web untuk mencatat jurnal trading forex dengan fitur analisis profit/lo
 
 1. **Login**:
    - Username: `admin`
-   - Password: `trading123`
+   - Password: `admin`
 
 2. **Input Trading**:
    - Isi form di tab Journal
