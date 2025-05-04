@@ -1,33 +1,71 @@
 # Trading Journal Forex
 
-Aplikasi web untuk mencatat jurnal trading forex dengan fitur pelacakan emosi dan analisis dampak berita ekonomi.
+Aplikasi web untuk mencatat jurnal trading forex dengan fitur analisis profit/loss dan dampak berita ekonomi.
 
-## Fitur
+## Fitur Utama
 
-- Pencatatan transaksi trading
-- Pelacakan kondisi emosi saat trading
-- Klasifikasi dampak berita ekonomi
-- Statistik performa trading
-- Kalender emosional
-- Analisis dampak berita ekonomi terhadap hasil trading
+- **Sistem Login**: Proteksi dengan username dan password
+- **Input Trading**:
+  - Input manual currency pair
+  - Catatan lengkap setiap transaksi
+  - Analisis dampak berita ekonomi
+- **Manajemen Data**:
+  - Edit dan hapus entri trading
+  - Export data ke Excel
+  - Import data dari Excel
+- **Analisis**:
+  - Statistik performa trading
+  - Kalender Profit/Loss
+  - Analisis dampak berita ekonomi terhadap trading
+- **Chart Visualisasi**:
+  - Grafik performa bulanan
+  - Distribusi hasil trading
+  - Dampak berita ekonomi
 
-## Cara Instalasi Manual (tanpa terminal)
+## Cara Instalasi
 
-1. Download file ZIP repository ini
-2. Ekstrak file ZIP ke folder yang diinginkan
-3. Buka folder hasil ekstraksi
-4. Buka file `index.html` di browser web Anda
+1. Download file ZIP repository
+2. Ekstrak ke folder yang diinginkan
+3. Buka file `index.html` di browser web
 
-## Cara Deploy ke Vercel
+## Cara Menggunakan
 
-1. Buat akun di [Vercel](https://vercel.com) (jika belum punya)
-2. Klik "New Project"
-3. Pilih "Import Project"
-4. Upload file ZIP ini atau connect ke repository GitHub jika sudah di-upload
-5. Klik "Deploy"
+1. **Login**:
+   - Username: `admin`
+   - Password: `trading123`
 
-Aplikasi akan langsung online setelah proses deploy selesai.
+2. **Input Trading**:
+   - Isi form di tab Journal
+   - Currency pair bisa diinput manual (contoh: EUR/USD, GBP/JPY)
 
-## Penyimpanan Data
+3. **Edit/Hapus**:
+   - Klik tombol Edit/Delete di kolom Actions
 
-Data disimpan secara lokal di browser menggunakan localStorage. Untuk backup data, ekspor data dari localStorage atau screenshot statistik penting.
+4. **Export/Import**:
+   - Export: Download data dalam format Excel
+   - Import: Upload file Excel yang sebelumnya diexport
+
+5. **Analisis**:
+   - Lihat statistik di tab Statistics
+   - Pantau kalender Profit/Loss di tab Calendar
+   - Analisis dampak berita di tab Economic News
+
+## Deploy ke Vercel
+
+1. Upload ke GitHub
+2. Buat proyek baru di Vercel
+3. Connect ke repository GitHub
+4. Deploy aplikasi
+
+## Catatan Keamanan
+
+1. Ganti password default sebelum digunakan untuk produksi
+2. Data disimpan di browser lokal (localStorage)
+3. Selalu backup data dengan export ke Excel
+
+## Teknologi
+
+- HTML5, CSS3, JavaScript
+- Chart.js untuk visualisasi data
+- SheetJS untuk import/export Excel
+- LocalStorage untuk penyimpanan data
