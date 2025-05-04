@@ -1,9 +1,10 @@
 // Configuration
 const APP_USERNAME = "admin";
-const APP_PASSWORD = "trading123"; // In production, use a more secure password
+const APP_PASSWORD = "admin"; // In production, use a more secure password
 
 // Data storage
 let trades = [];
+let currentCalendarDate = new Date(); // Menyimpan status kalender saat ini
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', function() {
@@ -69,7 +70,7 @@ function showApp() {
     document.getElementById('app-content').style.display = 'block';
     renderTradeList();
     updateStatistics();
-    generateCalendar(new Date());
+    generateCalendar(currentCalendarDate);
 }
 
 function showLogin() {
@@ -140,7 +141,7 @@ function setupTradeForm() {
         saveTrades();
         renderTradeList();
         updateStatistics();
-        generateCalendar(new Date(trade.date));
+        generateCalendar(currentCalendarDate);
         
         tradeForm.reset();
         document.getElementById('edit-index').value = "-1";
@@ -224,7 +225,7 @@ function deleteTrade(index) {
         saveTrades();
         renderTradeList();
         updateStatistics();
-        generateCalendar(new Date());
+        generateCalendar(currentCalendarDate);
     }
 }
 
@@ -457,17 +458,13 @@ function updateNewsImpactChart() {
 // P/L Calendar functions
 function setupCalendar() {
     document.getElementById('prev-month').addEventListener('click', function() {
-        const currentMonth = document.getElementById('current-month').textContent;
-        const date = new Date(currentMonth + ' 1, 2000');
-        date.setMonth(date.getMonth() - 1);
-        generateCalendar(date);
+        currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
+        generateCalendar(currentCalendarDate);
     });
     
     document.getElementById('next-month').addEventListener('click', function() {
-        const currentMonth = document.getElementById('current-month').textContent;
-        const date = new Date(currentMonth + ' 1, 2000');
-        date.setMonth(date.getMonth() + 1);
-        generateCalendar(date);
+        currentCalendarDate.setMonth(currentCalendarDate.getMonth() + 1);
+        generateCalendar(currentCalendarDate);
     });
 }
 
@@ -481,14 +478,6 @@ function generateCalendar(date) {
     document.getElementById('current-month').textContent = 
         `${monthNames[date.getMonth()]} ${date.getFullYear()}`;
     
-    // Get first day of month and total days
-    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    const totalDays = lastDay.getDate();
-    
-    // Get day of week for first day (0 = Sunday, 6 = Saturday)
-    let startingDay = firstDay.getDay();
-    
     // Create day headers
     const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     dayNames.forEach(day => {
@@ -497,6 +486,12 @@ function generateCalendar(date) {
         dayHeader.textContent = day;
         calendarEl.appendChild(dayHeader);
     });
+    
+    // Get first day of month and total days
+    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    const totalDays = lastDay.getDate();
+    const startingDay = firstDay.getDay();
     
     // Add empty cells for days before the first day of the month
     for (let i = 0; i < startingDay; i++) {
@@ -510,13 +505,18 @@ function generateCalendar(date) {
         const dayCell = document.createElement('div');
         dayCell.className = 'calendar-day';
         
+        // Add day number
         const dayNumber = document.createElement('div');
         dayNumber.className = 'day-number';
         dayNumber.textContent = day;
         dayCell.appendChild(dayNumber);
         
-        // Check if there are trades for this day
-        const currentDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+        // Format date as YYYY-MM-DD
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const dayFormatted = day.toString().padStart(2, '0');
+        const currentDate = `${date.getFullYear()}-${month}-${dayFormatted}`;
+        
+        // Check trades for this day
         const dayTrades = trades.filter(t => t.date === currentDate);
         
         if (dayTrades.length > 0) {
@@ -526,6 +526,7 @@ function generateCalendar(date) {
             const plIndicator = document.createElement('div');
             plIndicator.className = 'pl-indicator';
             
+            // Set color based on profit/loss
             if (netPL > 0) {
                 plIndicator.classList.add('profit');
                 plIndicator.textContent = `+${netPL.toFixed(2)}`;
@@ -647,7 +648,7 @@ function importFromExcel(e) {
             saveTrades();
             renderTradeList();
             updateStatistics();
-            generateCalendar(new Date());
+            generateCalendar(currentCalendarDate);
             
             alert('Import successful!');
         } catch (error) {
