@@ -197,20 +197,19 @@ tr:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+.calendar-controls h3 {
+    margin: 0;
+    font-size: 1.2rem;
 }
 
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
-}
-
-.calendar-day {
-    height: 80px;
-    border: 1px solid #ddd;
-    padding: 5px;
-    position: relative;
+    margin-top: 15px;
 }
 
 .day-header {
@@ -220,11 +219,25 @@ tr:hover {
     color: #7f8c8d;
 }
 
+.calendar-day {
+    height: 80px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    position: relative;
+    background-color: #f9f9f9;
+}
+
+.calendar-day.empty {
+    background-color: transparent;
+    border: none;
+}
+
 .day-number {
     position: absolute;
     top: 5px;
     right: 5px;
     font-weight: bold;
+    color: #333;
 }
 
 .pl-indicator {
@@ -241,6 +254,13 @@ tr:hover {
     text-align: center;
     word-break: break-word;
     overflow: hidden;
+    padding: 2px;
+}
+
+.pl-indicator small {
+    font-size: 10px;
+    display: block;
+    margin-top: 3px;
 }
 
 .pl-legend {
@@ -356,74 +376,4 @@ tr:hover {
     .calendar-day {
         height: 50px;
     }
-}
-/* Tambahkan ini untuk memperbaiki tampilan kalender */
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    margin-top: 15px;
-}
-
-.calendar-day {
-    height: 80px;
-    border: 1px solid #ddd;
-    padding: 5px;
-    position: relative;
-    background-color: #f9f9f9;
-}
-
-.calendar-day.empty {
-    background-color: transparent;
-    border: none;
-}
-
-.day-number {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-.pl-indicator {
-    width: 100%;
-    height: calc(100% - 25px);
-    margin-top: 20px;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    color: white;
-    text-align: center;
-    word-break: break-word;
-    overflow: hidden;
-    padding: 2px;
-}
-
-.pl-indicator small {
-    font-size: 10px;
-    display: block;
-    margin-top: 3px;
-}
-
-.current-month {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 10px 0;
-    text-align: center;
-}
-
-.calendar-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.calendar-controls button {
-    padding: 5px 15px;
-    font-size: 14px;
 }
