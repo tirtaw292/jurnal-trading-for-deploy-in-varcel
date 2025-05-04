@@ -10,9 +10,39 @@ body {
     background-color: #f5f5f5;
     color: #333;
     line-height: 1.6;
-    padding: 20px;
 }
 
+/* Login Screen Styles */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.login-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-box h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.error-message {
+    color: #e74c3c;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Main App Styles */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -22,9 +52,19 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2, h3 {
-    color: #2c3e50;
-    margin-bottom: 15px;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+header > div {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 /* Tabs */
@@ -32,6 +72,7 @@ h1, h2, h3 {
     display: flex;
     margin-bottom: 20px;
     border-bottom: 1px solid #ddd;
+    flex-wrap: wrap;
 }
 
 .tab-btn {
@@ -151,7 +192,7 @@ tr:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Calendar styles */
+/* P/L Calendar styles */
 .calendar-controls {
     display: flex;
     justify-content: space-between;
@@ -186,12 +227,13 @@ tr:hover {
     font-weight: bold;
 }
 
-.emotion-indicator {
+.pl-indicator {
     width: 100%;
     height: calc(100% - 25px);
     margin-top: 20px;
     border-radius: 4px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: 12px;
@@ -201,7 +243,7 @@ tr:hover {
     overflow: hidden;
 }
 
-.emotion-legend {
+.pl-legend {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
@@ -222,13 +264,61 @@ tr:hover {
     display: inline-block;
 }
 
-/* Emotion colors */
-.happy { background-color: #2ecc71; }
-.anxious { background-color: #f39c12; }
-.fearful { background-color: #e74c3c; }
-.greedy { background-color: #9b59b6; }
-.frustrated { background-color: #34495e; }
+/* P/L colors */
+.profit { background-color: #2ecc71; }
+.loss { background-color: #e74c3c; }
 .neutral { background-color: #95a5a6; }
+
+/* Button variants */
+#logout-btn {
+    background-color: #e74c3c;
+}
+
+#logout-btn:hover {
+    background-color: #c0392b;
+}
+
+#export-btn, #import-btn {
+    background-color: #27ae60;
+}
+
+#export-btn:hover, #import-btn:hover {
+    background-color: #219653;
+}
+
+.edit-btn {
+    background-color: #f39c12;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.edit-btn:hover {
+    background-color: #e67e22;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+#cancel-edit {
+    background-color: #95a5a6;
+    margin-left: 10px;
+}
+
+#cancel-edit:hover {
+    background-color: #7f8c8d;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -238,6 +328,15 @@ tr:hover {
     
     .calendar-day {
         height: 60px;
+    }
+    
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    header > div {
+        margin-top: 10px;
     }
 }
 
@@ -252,5 +351,9 @@ tr:hover {
     
     .tab-btn {
         flex: 1 0 50%;
+    }
+    
+    .calendar-day {
+        height: 50px;
     }
 }
