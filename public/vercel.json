@@ -2,13 +2,5 @@
   "version": 2,
   "public": true,
   "name": "trading-journal-forex",
-  "rewrites": [ {
-      "source": "/jurnal",
-      "destination": "https://jurnalfx.vercel.app/"
-    },
-    {
-      "source": "/fundamental",
-      "destination": "https://sentiment-fundamental-tirtas-projects-20b99093.vercel.app/"
-    }
-  ]
+ "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
