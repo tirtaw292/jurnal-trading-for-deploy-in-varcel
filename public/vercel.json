@@ -2,7 +2,7 @@
   "version": 2,
   "public": true,
   "name": "trading-journal-forex",
-  "rewrites": { {
+  "rewrites": [ {
       "source": "/jurnal",
       "destination": "https://jurnalfx.vercel.app/"
     },
